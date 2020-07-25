@@ -4,11 +4,12 @@
  * @Author: 小白
  * @Date: 2020-07-25 09:02:10
  * @LastEditors: 小白
- * @LastEditTime: 2020-07-25 13:32:49
+ * @LastEditTime: 2020-07-25 16:36:13
  */
 const IS_PROD = process.env.NODE_ENV === 'production';
 const path = require('path');
-console.log(`🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀当前环境${process.env.NODE_ENV}`);
+console.log(`🚀当前环境${process.env.NODE_ENV}`);
+console.log(`🔥当前环境${process.env.VUE_APP_BASE_API}`);
 const CND = {
 	css: [],
 	js: [
@@ -47,7 +48,8 @@ module.exports = {
 		config.resolve.alias
 			.set('@assets', resolve('src/assets'))
 			.set('@', resolve('src'))
-			.set('@components', resolve('src/components'))
+            .set('@components', resolve('src/components'))
+            .set('@images', resolve('src/assets/images'))
 			.set('@utils', resolve('src/utils'));
 	},
 	css: {
