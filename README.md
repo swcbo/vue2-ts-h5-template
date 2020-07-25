@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:28
  * @LastEditors: 小白
- * @LastEditTime: 2020-07-25 09:21:57
+ * @LastEditTime: 2020-07-25 11:11:13
 --> 
 # vue2-ts-h5-template
 
@@ -34,3 +34,5 @@ yarn lint
 - [x] scss配置
 - [x] vuex配置
 - [x] vue-router配置
+- [x] vant
+- [x] cdn引入
