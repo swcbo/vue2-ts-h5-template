@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-07-26 13:30:27
+ * @LastEditTime: 2020-07-26 21:12:55
  */ 
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
@@ -35,6 +35,6 @@ const router = new VueRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
-    
+    next()
 })
 export default router;
