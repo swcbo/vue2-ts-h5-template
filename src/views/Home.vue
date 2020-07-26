@@ -1,8 +1,16 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 小白
+ * @Date: 2020-07-25 08:06:14
+ * @LastEditors: 小白
+ * @LastEditTime: 2020-07-26 11:39:00
+--> 
 <!--  -->
 <template>
-  <div class="titile">
+  <div>
     32131212312
-    <Button>{{title}}</Button>
+    <Button class="mT-20">{{title}}</Button>
   </div>
 </template>
 
@@ -18,4 +26,6 @@ export default class extends Vue {
 }
 </script>
 <style lang='scss' scoped>
+.mT-20{
+}
 </style>
