@@ -3,7 +3,7 @@
  * @Author: 小白
  * @Date: 2019-11-22 09:30:15
  * @LastEditors: 小白
- * @LastEditTime: 2020-07-26 13:25:14
+ * @LastEditTime: 2020-08-13 09:32:11
  */
 import store from '@/store';
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
@@ -17,7 +17,7 @@ export interface LoginInterFace {
 	name: string;
 }
 
-@Module({ dynamic: true, store, name: 'user' })
+@Module({ dynamic: true, store, name: 'user', namespaced: true })
 class User extends VuexModule implements IUserState {
 	public token = getAuth() || 'token默认案例';
 	@Mutation
