@@ -4,12 +4,13 @@
  * @Author: 小白
  * @Date: 2020-07-25 09:02:10
  * @LastEditors: 小白
- * @LastEditTime: 2020-08-13 09:31:42
+ * @LastEditTime: 2020-08-15 13:54:20
  */
 const IS_PROD = process.env.NODE_ENV === 'production';
 const path = require('path');
 console.log(`🚀当前环境${process.env.NODE_ENV}`);
 console.log(`🔥当前环境${process.env.VUE_APP_BASE_API}`);
+console.log(`🔥当前自定义环境${process.env.VUE_APP_EVN}`);
 const CND = {
 	css: [],
 	js: [
@@ -23,7 +24,7 @@ function resolve(dir) {
 	return path.join(__dirname, dir);
 }
 module.exports = {
-	productionSourceMap: false, //取消sorcemap
+	productionSourceMap: process.env.VUE_APP_EVN !== 'production', //取消sorcemap
 	configureWebpack: (config) => {
 		if (IS_PROD) {
 			const externals = {
