@@ -7,8 +7,8 @@
     "prod": "vue-cli-service serve  --mode prod",
     "pre": "vue-cli-service serve  --mode pre",
     "build:dev": "vue-cli-service build --mode dev",
-    "build:pre": "vue-cli-service build --mode prod",
-    "build:prod": "vue-cli-service build --mode pre",
+    "build:pre": "vue-cli-service build --mode pre",
+    "build:prod": "vue-cli-service build --mode prod",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
