@@ -84,7 +84,9 @@ body {
 
 .tab_content {
     background: $background-color;
-    padding-bottom: 90px;
+    padding-bottom: calc(100px + constant(safe-area-inset-bottom));
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+
 }
 
 .row_between {

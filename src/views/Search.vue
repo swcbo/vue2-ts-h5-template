@@ -7,8 +7,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({ components: {}, name: 'Search' })
 export default class Search extends Vue {
-  created() {}
-  mounted() {}
 }
 </script>
 <style lang='scss' scoped>

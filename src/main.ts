@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 13:54:02
+ * @LastEditTime: 2020-09-23 14:02:44
  */
 import 'babel-polyfill';
 import Vue from 'vue';
@@ -14,7 +14,7 @@ import router from './router';
 import store from './store';
 Vue.config.productionTip = false;
 router.beforeEach(async ({ meta: { title } }, from, next) => {
-	document.title = title;
+	title && (document.title = title);
 	next();
 });
 

@@ -7,11 +7,11 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { IUserState } from './modules/user'
+import { ISearchState } from './modules/user'
 Vue.use(Vuex)
 
 export interface IRootState {
-    user: IUserState
+    search: ISearchState
 }
 
 // Declare empty store first, dynamically register all modules later.
