@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
  * @Descripttion: 
  * @version: 
@@ -9,6 +10,15 @@
 <template>
   <div id="app">
     <router-view />
+=======
+<template>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
+>>>>>>> 4f16d6d5de81abfa0a1c6eb46718057d4c00cc82
   </div>
 </template>
 
