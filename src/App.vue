@@ -1,24 +1,14 @@
-<<<<<<< HEAD
 <!--
  * @Descripttion: 
  * @version: 
  * @Author: 小白
  * @Date: 2020-08-23 00:41:28
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 13:36:39
+ * @LastEditTime: 2020-09-23 13:52:49
 -->
 <template>
   <div id="app">
     <router-view />
-=======
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
->>>>>>> 4f16d6d5de81abfa0a1c6eb46718057d4c00cc82
   </div>
 </template>
 

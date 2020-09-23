@@ -4,16 +4,20 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-08-15 13:56:21
+ * @LastEditTime: 2020-09-23 13:54:02
  */
 import 'babel-polyfill';
 import Vue from 'vue';
 import App from './App.vue';
+import './assets/css/common.scss';
 import router from './router';
 import store from './store';
-import './assets/css/common.scss';
 Vue.config.productionTip = false;
-Vue.prototype.$testprotorype = "样式"
+router.beforeEach(async ({ meta: { title } }, from, next) => {
+	document.title = title;
+	next();
+});
+
 new Vue({
 	router,
 	store,
