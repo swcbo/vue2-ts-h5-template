@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-09-23 13:36:18
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 21:56:00
+ * @LastEditTime: 2020-09-25 23:39:02
 -->
 <!--  -->
 <template>
@@ -46,26 +46,35 @@
           class="row_center"
           style="flex:1;justify-content: flex-start;"
         ><img
-            src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=251289958,1860898046&fm=26&gp=0.jpg"
+            :src="items.head_portrait"
             class="head"
-          />伪装者</div>
-        <div>999</div>
+          />{{item.name}}</div>
+        <div>{{item.votes}}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang='ts'>
+import { inquirelist } from '@/api';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({ components: {}, name: 'List' })
 export default class List extends Vue {
-  private items = [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7];
+  private items = [];
   private log = [
     require('@/assets/images/first.png'),
     require('@/assets/images/second.png'),
     require('@/assets/images/third.png'),
     require('@/assets/images/normal.png'),
   ];
+  private async created() {
+    const { content, count } = await inquirelist({
+      votes_sort: true, // 是否根据投票数递减排序
+      page: 1, // 第N页
+      page_size: 1000, // 每页显示条数
+    });
+    this.items = content;
+  }
 }
 </script>
 <style lang='scss' scoped>

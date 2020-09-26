@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 21:31:04
+ * @LastEditTime: 2020-09-25 22:22:29
  */
 
 import Vue from 'vue';
@@ -46,7 +46,10 @@ const routes: RouteConfig[] = [
 const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
-	routes
+	routes,
+	scrollBehavior(to, from, savedPosition) {
+		return { x: 0, y: 0 };
+	}
 });
 router.beforeEach((to, from, next) => {
 	next();

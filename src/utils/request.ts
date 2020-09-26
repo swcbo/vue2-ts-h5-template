@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 14:06:17
  * @LastEditors: 小白
- * @LastEditTime: 2020-07-25 15:42:01
+ * @LastEditTime: 2020-09-25 23:49:24
  */
 import { getAuth } from './utils';
 import { Toast } from 'vant';
@@ -56,15 +56,28 @@ const baseRequest = (config: any) => {
 		.then((response) => {
 			count -= 1;
 			count === 0 && Toast.clear();
-			if (response.data.httpStatusCode !== 200) {
+			if (!response.data.status) {
 				Toast.fail(response.data.message);
 			}
+
 			return response.data;
 		})
 		.catch((error) => {
 			count -= 1;
 			count === 0 && Toast.clear();
-			Toast.fail('服务器异常');
+			if (error.response.status === 401) {
+				const redirecturl = encodeURIComponent('https://zhongdhy.top/vote/');
+				const appid = 'wxee04542b110823d7';
+				window.location.href =
+					'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+					appid +
+					'&redirect_uri=' +
+					redirecturl +
+					'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+			} else {
+				Toast.fail('服务器异常');
+			}
+
 			return Promise.reject(error);
 		});
 };

@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 09:02:10
  * @LastEditors: 小白
- * @LastEditTime: 2020-08-15 13:54:20
+ * @LastEditTime: 2020-09-24 21:30:32
  */
 const IS_PROD = process.env.NODE_ENV === 'production';
 const path = require('path');
@@ -24,6 +24,7 @@ function resolve(dir) {
 	return path.join(__dirname, dir);
 }
 module.exports = {
+	publicPath:"/vote/",
 	productionSourceMap: process.env.VUE_APP_EVN !== 'production', //取消sorcemap
 	configureWebpack: (config) => {
 		if (IS_PROD) {

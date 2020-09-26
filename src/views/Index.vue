@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-09-23 13:34:53
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 22:41:51
+ * @LastEditTime: 2020-09-25 23:45:51
 -->
 <!--  -->
 <template>
@@ -13,19 +13,22 @@
       src="@/assets/images/home_top.png"
       style="width:100vw"
     />
-    <div class="top_content row_center">
+    <div
+      class="top_content row_center"
+      v-if="topInfo"
+    >
       <div class="column_center">
-        <span>20</span>
+        <span>{{topInfo.participation}}</span>
         <span>参与人数</span>
       </div>
       <div class="line" />
       <div class="column_center">
-        <span>20</span>
+        <span>{{topInfo.cumulative_voting}}</span>
         <span>累计投票</span>
       </div>
       <div class="line" />
       <div class="column_center">
-        <span>20</span>
+        <span>{{topInfo.access_statistics}}</span>
         <span>访问数量</span>
       </div>
     </div>
@@ -37,34 +40,65 @@
           :key="index"
           class="column_center item"
         >
-          <div class="top_title">{{index+1}}号</div>
-          <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2244088821,1012900352&fm=26&gp=0.jpg" />
-          <div class="name">这是名字</div>
-          <div class="tou">投TA一票</div>
-          <div class="now_piao">已获投票数：9999票</div>
+          <div class="top_title">{{item.serial_number}}号</div>
+          <img :src="item.head_portrait" />
+          <div class="name">{{item.name}}</div>
+          <div
+            class="tou"
+            @click="toPiao(item.id)"
+          >投TA一票</div>
+          <div class="now_piao">已获投票数：{{item.votes}}票</div>
         </div>
+        <div
+          v-if="items.length==0"
+          style="line-height:40vh;text-align:center;width:100%"
+        >暂无数据</div>
       </div>
-      <div class="loader_moer">加载更多</div>
+      <div
+        class="loader_moer"
+        v-if="total>page*20"
+      >加载更多</div>
     </div>
 
   </div>
 </template>
 
 <script lang='ts'>
+import { addPiao, inquirelist, query_statistical } from '@/api';
 import { SearchModule } from '@/store/modules/user';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 @Component({ components: {}, name: 'Index' })
 export default class Index extends Vue {
-  private items = [1, 2, 3, 4, 5, 6];
+  private items = [];
+  private topInfo: any = null;
+  private page = 1;
+  private total = 0;
   private get search() {
     return SearchModule.search;
   }
-  @Watch('search')
+  @Watch('search', {
+    immediate: true,
+  })
   private watchSearch() {
+    this.page = 1;
     this.getData();
   }
-  private getData() {
-    console.log(this.search);
+  private async toPiao(id: string) {
+    await addPiao(id);
+  }
+  private async created() {
+    const { content } = await query_statistical();
+    this.topInfo = content;
+  }
+  private async getData() {
+    const { content, count } = await inquirelist({
+      votes_sort: false, // 是否根据投票数递减排序
+      page: this.page, // 第N页
+      page_size: 20, // 每页显示条数
+      keyword: this.search, // 根据编号或者姓名查询
+    });
+    this.total = count;
+    this.items = this.page > 1 ? this.items.concat(content) : content;
   }
 }
 </script>
