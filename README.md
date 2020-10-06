@@ -7,6 +7,7 @@
  * @LastEditTime: 2020-07-25 11:11:13
 --> 
 # vue2-ts-h5-template
+### 基于vue2的webapp快速开发模板，开箱即用🚀
 
 ## Project setup
 ```
@@ -29,11 +30,11 @@ yarn lint
 ```
 
 ### To-do List
-- [ ] typescript配置
-- [ ] postcss-px-to-viewport配置
-- [ ] scss配置
-- [ ] vuex配置
-- [ ] vue-router配置
-- [ ] vant
-- [ ] cdn引入
-- [ ] 底部导航栏
+- [x] typescript配置
+- [x] postcss-px-to-viewport配置
+- [x] scss配置
+- [x] vuex配置
+- [x] vue-router配置
+- [x] vant
+- [x] cdn引入
+- [x] 底部导航栏
