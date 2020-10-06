@@ -29,10 +29,10 @@ yarn lint
 ```
 
 ### To-do List
-- [x] typescript配置
-- [x] postcss-px-to-viewport配置
-- [x] scss配置
-- [x] vuex配置
-- [x] vue-router配置
-- [x] vant
-- [x] cdn引入
+- [√] typescript配置
+- [√] postcss-px-to-viewport配置
+- [√] scss配置
+- [√] vuex配置
+- [√] vue-router配置
+- [√] vant
+- [√] cdn引入
