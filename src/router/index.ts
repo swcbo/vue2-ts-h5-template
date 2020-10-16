@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-25 22:22:29
+ * @LastEditTime: 2020-10-15 17:19:50
  */
 
 import Vue from 'vue';
@@ -17,7 +17,7 @@ const routes: RouteConfig[] = [
 		path: '/',
 		name: 'Home',
 		component: () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue'),
-		redirect: '/index',
+		redirect: '/detail',
 		children: [
 			{
 				path: '/index',

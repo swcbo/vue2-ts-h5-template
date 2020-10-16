@@ -4,13 +4,13 @@
  * @Author: 小白
  * @Date: 2020-09-23 13:34:53
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-25 23:45:51
+ * @LastEditTime: 2020-10-16 16:39:18
 -->
 <!--  -->
 <template>
   <div>
     <img
-      src="@/assets/images/home_top.png"
+      src="https://trade-erp.oss-cn-beijing.aliyuncs.com/erp_file/%E8%83%8C%E6%99%AF/%E7%9F%A9%E5%BD%A2%2018%403x.png"
       style="width:100vw"
     />
     <div
@@ -33,19 +33,20 @@
       </div>
     </div>
     <div class="list_view">
-      <div class="row_center"> <img src="@/assets/images/erwei.png" />点击预览人物事迹</div>
+      <div class="row_center"> <img src="@/assets/images/erwei.png" />点击预览作品大图</div>
       <div class="list_item_view">
         <div
           v-for="(item,index) in items"
           :key="index"
           class="column_center item"
+          @click="preView(item.head_portrait)"
         >
-          <div class="top_title">{{item.serial_number}}号</div>
+          <div class="top_title">{{item.serial_number}}</div>
           <img :src="item.head_portrait" />
-          <div class="name">{{item.name}}</div>
+          <div class="name" v-html="item.name" style='white-space: pre-wrap;'></div>
           <div
             class="tou"
-            @click="toPiao(item.id)"
+            @click.stop="toPiao(item.id,index)"
           >投TA一票</div>
           <div class="now_piao">已获投票数：{{item.votes}}票</div>
         </div>
@@ -54,10 +55,10 @@
           style="line-height:40vh;text-align:center;width:100%"
         >暂无数据</div>
       </div>
-      <div
+      <!-- <div
         class="loader_moer"
         v-if="total>page*20"
-      >加载更多</div>
+      >加载更多</div> -->
     </div>
 
   </div>
@@ -66,10 +67,11 @@
 <script lang='ts'>
 import { addPiao, inquirelist, query_statistical } from '@/api';
 import { SearchModule } from '@/store/modules/user';
+import { ImagePreview, Toast } from 'vant';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 @Component({ components: {}, name: 'Index' })
 export default class Index extends Vue {
-  private items = [];
+  private items: any[] = [];
   private topInfo: any = null;
   private page = 1;
   private total = 0;
@@ -83,8 +85,17 @@ export default class Index extends Vue {
     this.page = 1;
     this.getData();
   }
-  private async toPiao(id: string) {
-    await addPiao(id);
+  private preView(url: string) {
+    ImagePreview([url]);
+  }
+  private async toPiao(id: string, index: number) {
+    const { status } = await addPiao(id);
+    if (status) {
+      Toast({ message: '投票成功' });
+      let list = [...this.items];
+      list[index].votes += 1;
+      this.items = list;
+    }
   }
   private async created() {
     const { content } = await query_statistical();
@@ -94,7 +105,7 @@ export default class Index extends Vue {
     const { content, count } = await inquirelist({
       votes_sort: false, // 是否根据投票数递减排序
       page: this.page, // 第N页
-      page_size: 20, // 每页显示条数
+      page_size: 100, // 每页显示条数
       keyword: this.search, // 根据编号或者姓名查询
     });
     this.total = count;

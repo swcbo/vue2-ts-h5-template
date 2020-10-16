@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 22:41:35
+ * @LastEditTime: 2020-10-15 22:08:10
 --> 
 <!--  -->
 <template>
@@ -15,24 +15,28 @@
       inactive-color="#9A9A9A"
       active-color="#103056"
     >
-      <van-tabbar-item to="/index">
-        首页
-        <template #icon="props">
-          <img :src="props.active ? icon.home_choose : icon.home" />
-        </template>
-      </van-tabbar-item>
-      <van-tabbar-item @click="OnItemCLick" to="/index">
-        搜索
-        <template #icon="props">
-          <img :src="props.active ? icon.search_choose : icon.search" />
-        </template>
-      </van-tabbar-item>
       <van-tabbar-item to="/detail">
         活动详情
         <template #icon="props">
           <img :src="props.active ? icon.detail_choose : icon.detail" />
         </template>
       </van-tabbar-item>
+      <van-tabbar-item to="/index">
+        投票入口
+        <template #icon="props">
+          <img :src="props.active ? icon.home_choose : icon.home" />
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item
+        @click="OnItemCLick"
+        to="/index"
+      >
+        搜索
+        <template #icon="props">
+          <img :src="props.active ? icon.search_choose : icon.search" />
+        </template>
+      </van-tabbar-item>
+
       <van-tabbar-item to="/list">
         排行榜
         <template #icon="props">
@@ -42,7 +46,7 @@
     </van-tabbar>
     <van-overlay
       :show="show"
-      @click="show = false;active = 0;searchInfo=''"
+      @click="show = false;active = 1;searchInfo=''"
     >
       <div
         class="column_center"
@@ -104,8 +108,6 @@ export default class extends Vue {
     SearchModule.SET_SEARCH(this.searchInfo);
   }
   private OnItemCLick() {
-
-    this.searchInfo = '';
     this.show = true;
   }
 }

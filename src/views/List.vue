@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-09-23 13:36:18
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-25 23:39:02
+ * @LastEditTime: 2020-10-16 16:39:04
 -->
 <!--  -->
 <template>
@@ -14,18 +14,18 @@
   >
     <img
       class="image_v"
-      src="@/assets/images/home_top.png"
+      src="https://trade-erp.oss-cn-beijing.aliyuncs.com/erp_file/%E8%83%8C%E6%99%AF/%E7%9F%A9%E5%BD%A2%2018%403x.png"
       style="width:100vw"
     />
     <div class="content_list column_center">
-      <div class="title">排行榜</div>
+      <div class="title row_center"><div class="dot1" /><div class="dot2" /><div class="dot3 lc" />排行榜<div class="dot3" /><div class="dot2" /><div class="dot1" /></div>
       <div class="hint">你与他们投票差有多少？快快来围观~</div>
       <div
         class="row_between"
         style="width:100%;margin-bottom:10px"
       >
         <div class="myname">排名</div>
-        <div style="flex:1;text-align: left;">昵称</div>
+        <div style="flex:1;text-align: left;">作品名称</div>
         <div>票数</div>
       </div>
       <div
@@ -46,7 +46,7 @@
           class="row_center"
           style="flex:1;justify-content: flex-start;"
         ><img
-            :src="items.head_portrait"
+            :src="item.head_portrait"
             class="head"
           />{{item.name}}</div>
         <div>{{item.votes}}</div>
@@ -135,6 +135,27 @@ export default class List extends Vue {
     font-size: 48px;
     font-weight: 600;
     margin-bottom: 49px;
+    div {
+      background: #103056;
+      border-radius: 50%;
+      margin-left: 21px;
+      font-size: small;
+    }
+    .lc{
+      margin-right: 21px;
+    }
+    .dot1 {
+      width: 8px;
+      height: 8px;
+    }
+    .dot2 {
+      width: 12px;
+      height: 12px;
+    }
+    .dot3 {
+      width: 14px;
+      height: 14px;
+    }
   }
   .hint {
     font-size: 28px;

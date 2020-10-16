@@ -1,20 +1,18 @@
-import { setAuth, getAuth } from './utils/utils';
-import request from '@/utils/request';
 /*
  * @Descripttion:
  * @version:
  * @Author: 小白
  * @Date: 2020-07-25 08:06:14
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-25 23:55:11
+ * @LastEditTime: 2020-10-15 17:43:08
  */
-import 'babel-polyfill';
 import Vue from 'vue';
+import { checkCode } from './api';
 import App from './App.vue';
 import './assets/css/common.scss';
 import router from './router';
 import store from './store';
-import { checkCode } from './api';
+import { getAuth, setAuth } from './utils/utils';
 Vue.config.productionTip = false;
 router.beforeEach(async ({ meta: { title } }, from, next) => {
 	title && (document.title = title);
@@ -47,7 +45,7 @@ new Vue({
 			const { content: { token, status } } = await checkCode(this.getCodes('code')!!);
 			if (status) {
 				setAuth(token);
-				location.reload();
+				location.replace("https://zhongdhy.top/vote/")
 			}
 		},
 		getCodes(code: string) {

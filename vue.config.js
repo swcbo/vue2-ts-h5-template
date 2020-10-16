@@ -4,7 +4,7 @@
  * @Author: 小白
  * @Date: 2020-07-25 09:02:10
  * @LastEditors: 小白
- * @LastEditTime: 2020-09-24 21:30:32
+ * @LastEditTime: 2020-10-15 17:42:57
  */
 const IS_PROD = process.env.NODE_ENV === 'production';
 const path = require('path');
@@ -14,10 +14,10 @@ console.log(`🔥当前自定义环境${process.env.VUE_APP_EVN}`);
 const CND = {
 	css: [],
 	js: [
-		'https://cdn.bootcss.com/vue/2.6.11/vue.min.js',
-		'https://cdn.bootcss.com/vue-router/3.2.0/vue-router.min.js',
-		'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
-		'https://cdn.bootcss.com/vuex/3.5.1/vuex.min.js'
+		// 'https://cdn.bootcss.com/vue/2.6.11/vue.min.js',
+		// 'https://cdn.bootcss.com/vue-router/3.2.0/vue-router.min.js',
+		// 'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
+		// 'https://cdn.bootcss.com/vuex/3.5.1/vuex.min.js'
 	]
 };
 function resolve(dir) {
@@ -28,11 +28,12 @@ module.exports = {
 	productionSourceMap: process.env.VUE_APP_EVN !== 'production', //取消sorcemap
 	configureWebpack: (config) => {
 		if (IS_PROD) {
+			
 			const externals = {
-				axios: 'axios',
-				vue: 'Vue',
-				vuex: 'Vuex',
-				'vue-router': 'VueRouter'
+				// axios: 'axios',
+				// vue: 'Vue',
+				// vuex: 'Vuex',
+				// 'vue-router': 'VueRouter'
 			};
 			console.log(`🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀当前cnd引用${JSON.stringify(externals)}`);
 			config.externals = externals;
