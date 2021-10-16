@@ -1,12 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-07-25 08:06:14
- * @LastEditors: 小白
- * @LastEditTime: 2020-10-15 17:19:50
- */
-
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 

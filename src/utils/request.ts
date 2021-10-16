@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 请求通用 
- * @version: 1.0
- * @Author: 小白
- * @Date: 2020-07-25 14:06:17
- * @LastEditors: 小白
- * @LastEditTime: 2020-09-25 23:49:24
- */
 import { getAuth } from './utils';
 import { Toast } from 'vant';
 import axios, { AxiosRequestConfig } from 'axios';

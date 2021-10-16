@@ -1,13 +1,5 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: 小白
- * @Date: 2020-07-25 08:06:14
- * @LastEditors: 小白
- * @LastEditTime: 2020-10-15 17:43:08
- */
 import Vue from 'vue';
-import { checkCode } from './api';
+import { checkCode, statistical } from './api';
 import App from './App.vue';
 import './assets/css/common.scss';
 import router from './router';
@@ -45,7 +37,8 @@ new Vue({
 			const { content: { token, status } } = await checkCode(this.getCodes('code')!!);
 			if (status) {
 				setAuth(token);
-				location.replace("https://zhongdhy.top/vote/")
+				statistical()
+				location.replace('https://zhongdhy.top/vote/');
 			}
 		},
 		getCodes(code: string) {

@@ -1,12 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-09-23 13:34:53
- * @LastEditors: 小白
- * @LastEditTime: 2020-10-16 16:39:18
--->
-<!--  -->
 <template>
   <div>
     <img
@@ -39,10 +30,10 @@
           v-for="(item,index) in items"
           :key="index"
           class="column_center item"
-          @click="preView(item.head_portrait)"
+          @click="preView(`${item.head_portrait}?x-oss-process=image/resize,h_1200,m_lfit`)"
         >
           <div class="top_title">{{item.serial_number}}</div>
-          <img :src="item.head_portrait" />
+          <img :src="`${item.head_portrait}?x-oss-process=image/resize,h_400,m_lfit`" />
           <div class="name" v-html="item.name" style='white-space: pre-wrap;'></div>
           <div
             class="tou"
@@ -65,7 +56,7 @@
 </template>
 
 <script lang='ts'>
-import { addPiao, inquirelist, query_statistical } from '@/api';
+import { addPiao, inquirelist, querystatistical } from '@/api';
 import { SearchModule } from '@/store/modules/user';
 import { ImagePreview, Toast } from 'vant';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
@@ -92,13 +83,13 @@ export default class Index extends Vue {
     const { status } = await addPiao(id);
     if (status) {
       Toast({ message: '投票成功' });
-      let list = [...this.items];
+      const list = [...this.items];
       list[index].votes += 1;
       this.items = list;
     }
   }
   private async created() {
-    const { content } = await query_statistical();
+    const { content } = await querystatistical();
     this.topInfo = content;
   }
   private async getData() {

@@ -1,10 +1,3 @@
-/*
- * @Description: 用户store
- * @Author: 小白
- * @Date: 2019-11-22 09:30:15
- * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 22:15:04
- */
 import store from '@/store';
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 export interface ISearchState {

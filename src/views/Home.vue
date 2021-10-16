@@ -1,12 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-07-25 08:06:14
- * @LastEditors: 小白
- * @LastEditTime: 2020-10-15 22:08:10
---> 
-<!--  -->
 <template>
   <div>
     <router-view class="tab_content" />
@@ -104,7 +95,7 @@ export default class extends Vue {
 
   private onOk() {
     this.show = false;
-    this.active = 0;
+    this.active = 1;
     SearchModule.SET_SEARCH(this.searchInfo);
   }
   private OnItemCLick() {

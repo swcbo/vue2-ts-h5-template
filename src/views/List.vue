@@ -1,12 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-09-23 13:36:18
- * @LastEditors: 小白
- * @LastEditTime: 2020-10-16 16:39:04
--->
-<!--  -->
 <template>
   <div
     style="position:relative"
@@ -46,7 +37,7 @@
           class="row_center"
           style="flex:1;justify-content: flex-start;"
         ><img
-            :src="item.head_portrait"
+            :src="`${item.head_portrait}?x-oss-process=image/resize,h_100,m_lfit`"
             class="head"
           />{{item.name}}</div>
         <div>{{item.votes}}</div>

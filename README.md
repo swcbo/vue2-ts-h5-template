@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-07-25 08:06:28
- * @LastEditors: 小白
- * @LastEditTime: 2020-07-25 11:11:13
---> 
 # vue2-ts-h5-template
 
 ## Project setup

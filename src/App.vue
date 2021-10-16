@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-08-23 00:41:28
- * @LastEditors: 小白
- * @LastEditTime: 2020-09-23 13:52:49
--->
 <template>
   <div id="app">
     <router-view />

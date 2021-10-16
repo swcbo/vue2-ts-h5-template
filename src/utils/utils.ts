@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-07-25 14:09:42
- * @LastEditors: 小白
- * @LastEditTime: 2020-09-25 22:29:36
- */
 
 export const setAuth = (auth: string) => {
 	localStorage.setItem('auth', auth);

@@ -1,11 +1,3 @@
-/*
- * @Descripttion: 
- * @version: 
- * @Author: 小白
- * @Date: 2020-07-25 09:02:10
- * @LastEditors: 小白
- * @LastEditTime: 2020-10-15 17:42:57
- */
 const IS_PROD = process.env.NODE_ENV === 'production';
 const path = require('path');
 console.log(`🚀当前环境${process.env.NODE_ENV}`);
