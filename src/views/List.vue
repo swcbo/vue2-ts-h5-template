@@ -5,12 +5,12 @@
   >
     <img
       class="image_v"
-      src="https://trade-erp.oss-cn-beijing.aliyuncs.com/erp_file/%E8%83%8C%E6%99%AF/%E7%9F%A9%E5%BD%A2%2018%403x.png"
+      src="@/assets/images/top_view.png"
       style="width:100vw"
     />
     <div class="content_list column_center">
       <div class="title row_center"><div class="dot1" /><div class="dot2" /><div class="dot3 lc" />排行榜<div class="dot3" /><div class="dot2" /><div class="dot1" /></div>
-      <div class="hint">你与他们投票差有多少？快快来围观~</div>
+      <div class="hint">投票排行多少？快快来围观~</div>
       <div
         class="row_between"
         style="width:100%;margin-bottom:10px"

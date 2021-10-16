@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"/>
     <van-number-keyboard safe-area-inset-bottom />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>月圆京城 情系中华 </title>
+    <title>投票系统 </title>
     <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
     <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
     <script>
@@ -22,37 +22,11 @@
         document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
       }
     </script>
-    <!-- 使用cdn的css文件 -->
-    <!-- <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
-      <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="preload" as="style"/>
-      <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet"/>
-    <% } %> -->
-    <!-- 使用cdn的js文件 -->
-    <!-- <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
-      <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
-    <% } %> -->
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <audio src="https://trade-erp.oss-cn-beijing.aliyuncs.com/erp_file/%E8%83%8C%E6%99%AF/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3" autoplay="autoplay" class="music-audio" id="audio" loop="loop"></audio>
-    <!-- built files will be auto injected -->
   </body>
-  <script>
-    document.addEventListener('DOMContentLoaded',
-        function () {
-            function audioAutoPlay() {
-                var audio = document.getElementById('audio');
-                audio.play();
-                document.addEventListener("WeixinJSBridgeReady",
-                    function () {
-                        audio.play();
-                    },
-                    false);
-            }
-            audioAutoPlay();
-        });
-</script>
 </html>

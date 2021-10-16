@@ -1,22 +1,19 @@
 const IS_PROD = process.env.NODE_ENV === 'production';
 const path = require('path');
+const WebpackDeploySftp = require('webpack-deploy-sftp')
 console.log(`🚀当前环境${process.env.NODE_ENV}`);
 console.log(`🔥当前环境${process.env.VUE_APP_BASE_API}`);
 console.log(`🔥当前自定义环境${process.env.VUE_APP_EVN}`);
 const CND = {
 	css: [],
 	js: [
-		// 'https://cdn.bootcss.com/vue/2.6.11/vue.min.js',
-		// 'https://cdn.bootcss.com/vue-router/3.2.0/vue-router.min.js',
-		// 'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
-		// 'https://cdn.bootcss.com/vuex/3.5.1/vuex.min.js'
 	]
 };
 function resolve(dir) {
 	return path.join(__dirname, dir);
 }
 module.exports = {
-	publicPath:"/vote/",
+	// publicPath:"/vote/",
 	productionSourceMap: process.env.VUE_APP_EVN !== 'production', //取消sorcemap
 	configureWebpack: (config) => {
 		if (IS_PROD) {
@@ -30,7 +27,15 @@ module.exports = {
 			console.log(`🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀当前cnd引用${JSON.stringify(externals)}`);
 			config.externals = externals;
 		}
-		config.plugins = [ ...config.plugins ];
+		config.plugins = [ ...config.plugins ,!IS_PROD? () => {}
+        : new WebpackDeploySftp({
+            port: '22',
+            host: '124.71.105.75',
+            user: 'root',
+            password: 'Weihouwz@168168',
+            path: path.resolve(__dirname, 'dist'),
+            remotePath: '/home/dist'
+          })];
 	},
 	chainWebpack: (config) => {
 		if (IS_PROD) {

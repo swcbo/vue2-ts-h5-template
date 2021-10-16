@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      src="https://trade-erp.oss-cn-beijing.aliyuncs.com/erp_file/%E8%83%8C%E6%99%AF/%E7%9F%A9%E5%BD%A2%2018%403x.png"
+      src="@/assets/images/top_view.png"
       style="width:100vw"
     />
     <div
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="list_view">
-      <div class="row_center"> <img src="@/assets/images/erwei.png" />点击预览作品大图</div>
+      <div class="row_center"> <img src="@/assets/images/erwei.png" class="top_view"/>点击查看详情</div>
       <div class="list_item_view">
         <div
           v-for="(item,index) in items"
@@ -129,7 +129,8 @@ export default class Index extends Vue {
   color: #103056;
   box-sizing: border-box;
   width: 100vw;
-  img {
+
+  .top_view {
     height: 36px;
     width: 36px;
     margin-right: 32px;
@@ -141,37 +142,47 @@ export default class Index extends Vue {
     align-items: center;
     margin-top: 41px;
     .item {
-      width: 302px;
+      width: 300px;
       height: 560px;
       background-image: url(../assets/images/list_bg.png);
       background-size: 100%;
       background-repeat: no-repeat;
       margin-top: 36px;
       position: relative;
-      justify-content: flex-start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       img {
-        width: 280px;
-        height: 363px;
-        margin-top: 11px;
-        margin-right: 0;
-        margin-bottom: 21px;
+        width: 270px;
+        height: 360px;
         border-radius: 10px;
+        margin-top: 10px;
+        object-fit: cover;
       }
       .name {
         font-size: 28px;
         font-weight: 500;
         color: #103056;
-        margin-bottom: 15px;
-        line-height: 100%;
+        margin-top: 10px;
+        line-height: 120%;
+         text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
       .tou {
         width: 163px;
-        height: 54px;
+        height: 48px;
         background: #103056;
-        line-height: 54px;
+        line-height: 48px;
         text-align: center;
+         margin: 10px 0;
         border-radius: 27px;
-        font-size: 28px;
+        font-size: 24px;
         font-weight: 500;
         color: #ffffff;
       }
@@ -179,8 +190,7 @@ export default class Index extends Vue {
         font-size: 26px;
         font-weight: 500;
         color: #103056;
-        margin-top: 17px;
-        line-height: 100%;
+        line-height: 120%;
       }
       .top_title {
         width: 129px;
