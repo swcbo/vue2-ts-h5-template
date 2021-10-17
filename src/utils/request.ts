@@ -28,12 +28,14 @@ axios.interceptors.response.use(
 )
 let count = 0
 const baseRequest = (config: any) => {
-  count === 0 &&
-    Toast.loading({
-      message: '加载中...',
-      forbidClick: true,
-      duration: 0
-    })
+  if (!config.hiddenToast) {
+    count === 0 &&
+      Toast.loading({
+        message: '加载中...',
+        forbidClick: true,
+        duration: 0
+      })
+  }
   count += 1
   config = {
     ...config,
@@ -75,7 +77,7 @@ const baseRequest = (config: any) => {
 }
 
 export default {
-  get(url: string, params?: object, config?: AxiosRequestConfig) {
+  get(url: string, params?: object, config?: any) {
     return baseRequest({
       method: 'get',
       params,
@@ -83,7 +85,7 @@ export default {
       ...config
     })
   },
-  post(url: string, data: object, config?: AxiosRequestConfig) {
+  post(url: string, data: object, config?: any) {
     return baseRequest({
       data,
       method: 'post',
@@ -91,7 +93,7 @@ export default {
       ...config
     })
   },
-  patch(url: string, data: object, config?: AxiosRequestConfig) {
+  patch(url: string, data: object, config?: any) {
     return baseRequest({
       data,
       method: 'patch',
@@ -99,7 +101,7 @@ export default {
       ...config
     })
   },
-  put(url: string, data?: object, config?: AxiosRequestConfig) {
+  put(url: string, data?: object, config?: any) {
     return baseRequest({
       data,
       method: 'put',
@@ -107,7 +109,7 @@ export default {
       ...config
     })
   },
-  delete(url: string, data?: object, config?: AxiosRequestConfig) {
+  delete(url: string, data?: object, config?: any) {
     return baseRequest({
       data,
       method: 'delete',

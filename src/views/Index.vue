@@ -69,7 +69,7 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Index extends Vue {
   items: any[] = []
   topInfo: any = null
-  page = 1
+  page = 0
   total = 0
   finished = false
   loading = false

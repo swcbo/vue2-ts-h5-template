@@ -29,7 +29,7 @@
         :finished="finished"
         finished-text="没有更多了"
         @load="onLoad"
-        :offset="50"
+        :offset="10"
         class="list_item_view"
       >
         <div
@@ -70,7 +70,7 @@ export default class ListPage extends Vue {
   items = []
   finished = false
   loading = false
-  page = 1
+  page = 0
   total = 0
   log = [
     require('@/assets/images/first.png'),
