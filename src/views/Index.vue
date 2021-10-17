@@ -34,11 +34,7 @@
             v-for="(item, index) in items"
             :key="index"
             class="column_center item"
-            @click="
-              preView(
-                `${item.head_portrait}?x-oss-process=image/resize,h_1200,m_lfit`
-              )
-            "
+            @click="preView(item)"
           >
             <div class="top_title">{{ item.serial_number }}</div>
             <img
@@ -62,8 +58,8 @@
 
 <script lang="ts">
 import { addPiao, inquirelist, querystatistical } from '@/api'
-import { ImagePreview, Toast, List } from 'vant'
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { List, Toast } from 'vant'
+import { Component, Vue } from 'vue-property-decorator'
 @Component({
   components: {
     [List.name]: List
@@ -77,8 +73,8 @@ export default class Index extends Vue {
   total = 0
   finished = false
   loading = false
-  preView(url: string) {
-    ImagePreview([url])
+  preView(item: any) {
+    this.$router.push(`/detail/:${item.id}`)
   }
   async toPiao(id: string, index: number) {
     const { status } = await addPiao(id)

@@ -12,11 +12,11 @@ router.beforeEach(async ({ meta: { title } }, from, next) => {
 })
 document
   .getElementsByTagName('body')[0]
-  .style.setProperty('--height-primary', `${window.innerHeight}px`)
+  .style.setProperty('--height-primary', `${window.outerHeight}px`)
 window.addEventListener('resize', () => {
   document
     .getElementsByTagName('body')[0]
-    .style.setProperty('--height-primary', `${window.innerHeight}px`)
+    .style.setProperty('--height-primary', `${window.outerHeight}px`)
 })
 new Vue({
   router,
