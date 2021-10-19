@@ -1,5 +1,10 @@
 <template>
-  <div style="position:relative" class="row_center">
+  <div style="position:relative" class="row_center bg_view">
+    <img
+      src="@/assets/images/WechatIMG423.jpeg"
+      style="width:100vw"
+      class="image_v"
+    />
     <!-- <img
       class="image_v"
       src="@/assets/images/top_view.png"
@@ -15,7 +20,7 @@
         <div class="dot2" />
         <div class="dot1" />
       </div>
-      <div class="hint">投票排行多少？快快来围观~</div>
+      <!-- <div class="hint">投票排行多少？快快来围观~</div> -->
       <div
         class="row_between padding_t_40"
         style="width:100%;margin-bottom:10px;"
@@ -24,14 +29,15 @@
         <div style="flex:1;text-align: left;">作品名称</div>
         <div>票数</div>
       </div>
-      <van-list
+      <div class="list_item_view">
+        <!-- <van-list
         v-model="loading"
         :finished="finished"
         finished-text="没有更多了"
         @load="onLoad"
         :offset="10"
         class="list_item_view"
-      >
+      > -->
         <div
           v-for="(item, index) in items"
           :key="index"
@@ -56,7 +62,8 @@
           </div>
           <div>{{ item.votes }}</div>
         </div>
-      </van-list>
+      </div>
+      <!-- </van-list> -->
     </div>
   </div>
 </template>
@@ -73,12 +80,12 @@ export default class ListPage extends Vue {
   page = 0
   total = 0
   log = [
-    require('@/assets/images/first.png'),
-    require('@/assets/images/second.png'),
-    require('@/assets/images/third.png'),
-    require('@/assets/images/normal.png')
+    require('@/assets/images/first.jpg'),
+    require('@/assets/images/second.jpg'),
+    require('@/assets/images/third.jpg'),
+    require('@/assets/images/normal.jpg')
   ]
-  onLoad() {
+  created() {
     this.page += 1
     this.getData()
   }
@@ -86,7 +93,7 @@ export default class ListPage extends Vue {
     const { content, count } = await inquirelist({
       votes_sort: true, // 是否根据投票数递减排序
       page: this.page, // 第N页
-      page_size: 10 // 每页显示条数
+      page_size: 1000 // 每页显示条数
     })
     this.total = count
     this.loading = false
@@ -97,9 +104,18 @@ export default class ListPage extends Vue {
 </script>
 <style lang="scss" scoped>
 /* @import url(); 引入css类 */
+.bg_view {
+  background-image: url('../assets/images/WechatIMG424.jpeg');
+  background-repeat: no-repeat;
+  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);
+  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 100px);
+  overflow: auto;
+  background-size: 100% 100%;
+  position: relative;
+}
 .list_item_view {
-  height: calc(#{$height-primary} - 500px - constant(safe-area-inset-bottom));
-  height: calc(#{$height-primary} - 500px - env(safe-area-inset-bottom));
+  height: calc(#{$height-primary} - 618px - constant(safe-area-inset-bottom));
+  height: calc(#{$height-primary} - 618px - env(safe-area-inset-bottom));
   overflow: auto;
   width: 100%;
   margin-top: 10px;
@@ -115,22 +131,22 @@ export default class ListPage extends Vue {
   z-index: 1;
   width: 690px;
   color: #103156;
-  // margin-top: 338px;
-  margin-top: 20px;
+  margin-top: 248px;
+  // margin-top: 20px;
   box-sizing: border-box;
   overflow: hidden;
-  padding: 47px 0 20px 0;
+  padding: 27px 0 20px 0;
   background: #ffffff;
   border-radius: 10px;
   font-size: 30px;
   .list_item {
     border-bottom: 1px solid #e9e9e9;
-    padding: 21px 0 23px;
+    padding: 20px 0;
     font-size: 28px;
     .list_logo {
-      height: 55px;
-      width: 42px;
-      margin-right: 124px;
+      width: 130px;
+      object-fit: contain;
+      margin-right: 50px;
       position: relative;
       img {
         width: 100%;
@@ -138,7 +154,7 @@ export default class ListPage extends Vue {
       }
       .count {
         position: absolute;
-        top: 13px;
+        top: 40px;
         left: 0;
         right: 0;
         font-size: 22px;
@@ -165,7 +181,8 @@ export default class ListPage extends Vue {
   .title {
     font-size: 48px;
     font-weight: 600;
-    margin-bottom: 49px;
+    // margin-bottom: 49px;
+    margin-bottom: 20px;
     div {
       background: #103056;
       border-radius: 50%;

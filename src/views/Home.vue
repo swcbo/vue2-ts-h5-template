@@ -22,34 +22,31 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { Component, Vue } from 'vue-property-decorator';
-import { Tabbar, TabbarItem, Overlay } from 'vant';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import { Tabbar, TabbarItem, Overlay } from 'vant'
 @Component({
   components: {
     [Tabbar.name]: Tabbar,
     [TabbarItem.name]: TabbarItem,
-    [Overlay.name]: Overlay,
+    [Overlay.name]: Overlay
   },
-  name: 'Home',
+  name: 'Home'
 })
 export default class extends Vue {
-  private active = 0;
-   icon = {
+  private active = 0
+  icon = {
     home_choose: require('@images/home_tab_select.png'),
     home: require('@images/home_tab.png'),
     list_choose: require('@images/list_tab_select.png'),
-    list: require('@images/list_tab.png'),
-  };
+    list: require('@images/list_tab.png')
+  }
 }
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .wrapper {
   height: 454px;
   width: 594px;
-  background-image: url(../assets/images/ccc.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
   color: #103056;
   .cc {
     margin-top: 57px;
