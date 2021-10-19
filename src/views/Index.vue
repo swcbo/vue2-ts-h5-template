@@ -80,6 +80,11 @@
         </div>
       </div>
     </van-popup>
+    <div class="toNet" @click="toWeb">
+      前往
+      <br />
+      官网
+    </div>
   </div>
 </template>
 
@@ -109,6 +114,9 @@ export default class Index extends Vue {
   }
   preView(item: any) {
     this.$router.push(`/detail/${item.id}`)
+  }
+  toWeb() {
+    window.location.href = 'https://www.uavdvc.com'
   }
   async toPiao(id: string, index: number) {
     const { status } = await addPiao(id)
@@ -143,6 +151,19 @@ export default class Index extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+.toNet {
+  position: fixed;
+  top: 70vh;
+  right: 10px;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: 500;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  z-index: 1;
+  background-color: white;
+}
 .pop_view {
   padding: 30px;
   width: 70vw;

@@ -37,7 +37,7 @@ module.exports = {
             user: 'root',
             password: 'Weihouwz@168168',
             path: path.resolve(__dirname, 'dist'),
-            remotePath: '/home/dist'
+            remotePath: '/root/香满园/web_dist'
           })
     ]
   },
