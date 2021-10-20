@@ -30,7 +30,7 @@ new Vue({
     //     this.getopenId()
     //   } else {
     //     const redirecturl = encodeURIComponent('https://vote.huangb.top')
-    //     const appid = 'wxc28969991d4ab616'
+    //     const appid = 'wxe00470f7a99e85cf'
     //     window.location.href =
     //       'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
     //       appid +
@@ -43,13 +43,11 @@ new Vue({
   methods: {
     async getopenId() {
       const {
-        content: { token, status }
+        content: { token }
       } = await checkCode(this.getCodes('code')!!)
-      if (status) {
-        setAuth(token)
-        statistical()
-        location.replace('https://vote.huangb.top')
-      }
+      setAuth(token)
+      statistical()
+      location.replace('https://vote.huangb.top')
     },
     getCodes(code: string) {
       const reg = new RegExp('(^|&)' + code + '=([^&]*)(&|$)')
