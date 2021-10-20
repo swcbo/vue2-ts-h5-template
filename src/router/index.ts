@@ -14,14 +14,20 @@ const routes: RouteConfig[] = [
         path: '/index',
         name: 'Index',
         component: () =>
-          import(/* webpackChunkName: "Index" */ '@/views/Index.vue')
+          import(/* webpackChunkName: "Index" */ '@/views/Index.vue'),
+        meta: {
+          title: '网络投票'
+        }
       },
 
       {
         path: '/list',
         name: 'List',
         component: () =>
-          import(/* webpackChunkName: "List" */ '@/views/List.vue')
+          import(/* webpackChunkName: "List" */ '@/views/List.vue'),
+        meta: {
+          title: '排行榜'
+        }
       }
     ]
   },

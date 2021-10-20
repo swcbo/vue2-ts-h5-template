@@ -49,6 +49,7 @@
         <!-- </van-list> -->
       </div>
     </div>
+    <img src="@/assets/images/bottom_view.jpg" style="width:100vw" />
     <van-popup v-model="show" closeable round>
       <div class="pop_view">
         <div
@@ -77,9 +78,8 @@
       </div>
     </van-popup>
     <div class="toNet" @click="toWeb">
-      前往
-      <br />
-      官网
+      <img src="@/assets/images/fll.png" />
+      <div>官网入口</div>
     </div>
   </div>
 </template>
@@ -112,7 +112,7 @@ export default class Index extends Vue {
     this.$router.push(`/detail/${item.id}`)
   }
   toWeb() {
-    window.location.href = 'https://www.uavdvc.com'
+    window.location.href = 'https://www.uavdvc.com/'
   }
   async toPiao(id: string, index: number) {
     const { status } = await addPiao(id)
@@ -148,16 +148,18 @@ export default class Index extends Vue {
 <style lang="scss" scoped>
 .toNet {
   position: fixed;
-  top: 70vh;
-  right: 10px;
+  top: 40vh;
+  right: 5px;
   padding: 20px;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 500;
-  width: 80px;
-  height: 80px;
-  border-radius: 80px;
   z-index: 1;
-  background-color: white;
+  color: #4c6dac;
+  img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+  }
 }
 .pop_view {
   padding: 30px;
@@ -171,10 +173,11 @@ export default class Index extends Vue {
 .bg_view {
   background-image: url('../assets/images/WechatIMG424.jpeg');
   background-repeat: no-repeat;
-  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);
-  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 100px);
+  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 80px);
+  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 80px);
   background-size: 100% 100%;
   position: relative;
+  overflow-y: auto;
 }
 .loader_moer {
   width: 250px;
@@ -207,10 +210,10 @@ export default class Index extends Vue {
     margin-right: 32px;
   }
   .list_item_view {
-    height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
-    height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
+    // height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
+    // height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
     text-align: left;
-    overflow: auto;
+    // overflow: auto;
     width: 100%;
     .item {
       width: 300px;

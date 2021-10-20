@@ -7,6 +7,7 @@ import store from './store'
 import { getAuth, setAuth } from './utils/utils'
 Vue.config.productionTip = false
 router.beforeEach(async ({ meta: { title } }, from, next) => {
+  console.log(title)
   title && (document.title = title)
   next()
 })
