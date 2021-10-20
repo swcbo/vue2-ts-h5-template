@@ -51,16 +51,14 @@
 
           <div class="row_center" style="flex:1;justify-content: flex-start;">
             <img
-              :src="
-                `${item.head_portrait}?x-oss-process=image/resize,h_100,m_lfit`
-              "
+              :src="`${item.cover}?x-oss-process=image/resize,h_100,m_lfit`"
               class="head"
             />
             <div class="names" style="flex:1">
-              {{ item.name }}
+              {{ item.title }}
             </div>
           </div>
-          <div>{{ item.votes }}</div>
+          <div>{{ item.show_vote_number }}</div>
         </div>
       </div>
       <!-- </van-list> -->

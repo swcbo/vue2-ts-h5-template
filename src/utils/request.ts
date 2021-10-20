@@ -60,14 +60,14 @@ const baseRequest = (config: any) => {
       count -= 1
       count === 0 && Toast.clear()
       if (error.response.status === 401) {
-        const redirecturl = encodeURIComponent('https://vote.huangb.top')
-        const appid = 'wxc28969991d4ab616'
-        window.location.href =
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
-          appid +
-          '&redirect_uri=' +
-          redirecturl +
-          '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+        // const redirecturl = encodeURIComponent('https://vote.huangb.top')
+        // const appid = 'wxc28969991d4ab616'
+        // window.location.href =
+        //   'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+        //   appid +
+        //   '&redirect_uri=' +
+        //   redirecturl +
+        //   '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
       } else {
         Toast.fail('服务器异常')
       }
@@ -77,7 +77,7 @@ const baseRequest = (config: any) => {
 }
 
 export default {
-  get(url: string, params?: object, config?: any) {
+  get: (url: string, params?: object, config?: any) => {
     return baseRequest({
       method: 'get',
       params,
@@ -85,7 +85,7 @@ export default {
       ...config
     })
   },
-  post(url: string, data: object, config?: any) {
+  post: (url: string, data = {}, config?: any) => {
     return baseRequest({
       data,
       method: 'post',
@@ -93,7 +93,7 @@ export default {
       ...config
     })
   },
-  patch(url: string, data: object, config?: any) {
+  patch: (url: string, data: object, config?: any) => {
     return baseRequest({
       data,
       method: 'patch',
@@ -101,7 +101,7 @@ export default {
       ...config
     })
   },
-  put(url: string, data?: object, config?: any) {
+  put: (url: string, data?: object, config?: any) => {
     return baseRequest({
       data,
       method: 'put',
@@ -109,7 +109,7 @@ export default {
       ...config
     })
   },
-  delete(url: string, data?: object, config?: any) {
+  delete: (url: string, data?: object, config?: any) => {
     return baseRequest({
       data,
       method: 'delete',

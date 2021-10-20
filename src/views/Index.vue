@@ -3,17 +3,17 @@
     <img src="@/assets/images/WechatIMG423.jpeg" style="width:100vw" />
     <div class="top_content row_center" v-if="topInfo">
       <div class="column_center">
-        <span>{{ topInfo.participation }}</span>
+        <span>{{ topInfo.participate }}</span>
         <span>参与人数</span>
       </div>
       <div class="line" />
       <div class="column_center">
-        <span>{{ topInfo.cumulative_voting }}</span>
+        <span>{{ topInfo.vote_number }}</span>
         <span>累计投票</span>
       </div>
       <div class="line" />
       <div class="column_center">
-        <span>{{ topInfo.access_statistics }}</span>
+        <span>{{ topInfo.visit }}</span>
         <span>访问数量</span>
       </div>
     </div>
@@ -37,18 +37,14 @@
           @click="preView(item)"
         >
           <!-- <div class="top_title">{{ item.serial_number }}</div> -->
-          <img
-            :src="
-              `${item.head_portrait}?x-oss-process=image/resize,h_400,m_lfit`
-            "
-          />
+          <img :src="`${item.cover}?x-oss-process=image/resize,h_400,m_lfit`" />
           <div
             class="name"
-            v-html="item.name"
+            v-html="item.title"
             style="white-space: pre-wrap;"
           ></div>
           <div class="tou" @click.stop="toPiao(item.id, index)">投TA一票</div>
-          <div class="now_piao">已获投票数：{{ item.votes }}票</div>
+          <div class="now_piao">已获投票数：{{ item.show_vote_number }}票</div>
         </div>
         <!-- </van-list> -->
       </div>
@@ -214,6 +210,7 @@ export default class Index extends Vue {
   .list_item_view {
     height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
     height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
+    text-align: left;
     overflow: auto;
     width: 100%;
     .item {
