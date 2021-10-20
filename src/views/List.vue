@@ -50,10 +50,7 @@
           </div>
 
           <div class="row_center" style="flex:1;justify-content: flex-start;">
-            <img
-              :src="`${item.cover}?x-oss-process=image/resize,h_100,m_lfit`"
-              class="head"
-            />
+            <img :src="`${item.cover}?imageView2/1/h/100`" class="head" />
             <div class="names" style="flex:1">
               {{ item.title }}
             </div>
