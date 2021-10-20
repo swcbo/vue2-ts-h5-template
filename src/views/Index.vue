@@ -134,10 +134,9 @@ export default class Index extends Vue {
   }
   async getData() {
     const { content, count } = await inquirelist({
-      votes_sort: false, // 是否根据投票数递减排序
-      page: this.page, // 第N页
-      page_size: 1000 // 每页显示条数
-      // keyword: this.search, // 根据编号或者姓名查询
+      votes_sort: false,
+      page: this.page,
+      page_size: 1000
     })
     this.total = count
     this.loading = false

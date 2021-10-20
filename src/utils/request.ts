@@ -39,7 +39,7 @@ const baseRequest = (config: any) => {
   count += 1
   config = {
     ...config,
-    url: `${process.env.VUE_APP_BASE_API}${config.url}`,
+    url: `${process.env.VUE_APP_BASE_API}/${config.url}`,
     headers: {
       Authorization: `Bearer ${getAuth()}`,
       'Content-Type': 'application/json; charset=utf-8'
@@ -60,14 +60,14 @@ const baseRequest = (config: any) => {
       count -= 1
       count === 0 && Toast.clear()
       if (error.response.status === 401) {
-        // const redirecturl = encodeURIComponent('https://vote.huangb.top')
-        // const appid = 'wxc28969991d4ab616'
-        // window.location.href =
-        //   'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
-        //   appid +
-        //   '&redirect_uri=' +
-        //   redirecturl +
-        //   '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+        const redirecturl = encodeURIComponent('https://vote.huangb.top')
+        const appid = 'wxc28969991d4ab616'
+        window.location.href =
+          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+          appid +
+          '&redirect_uri=' +
+          redirecturl +
+          '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
       } else {
         Toast.fail('服务器异常')
       }
