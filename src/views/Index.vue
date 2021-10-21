@@ -47,9 +47,10 @@
           <div class="now_piao">已获投票数：{{ item.show_vote_number }}票</div>
         </div>
         <!-- </van-list> -->
+        <img src="@/assets/images/bottom_view.jpg" style="width:100vw" />
       </div>
     </div>
-    <img src="@/assets/images/bottom_view.jpg" style="width:100vw" />
+
     <van-popup v-model="show" closeable round>
       <div class="pop_view">
         <div
@@ -78,8 +79,7 @@
       </div>
     </van-popup>
     <div class="toNet" @click="toWeb">
-      <img src="@/assets/images/fll.png" />
-      <div>官网入口</div>
+      <img src="@/assets/images/rukou.jpg" />
     </div>
   </div>
 </template>
@@ -148,16 +148,15 @@ export default class Index extends Vue {
 <style lang="scss" scoped>
 .toNet {
   position: fixed;
-  top: 40vh;
-  right: 5px;
+  top: 70vh;
+  right: -10px;
   padding: 20px;
   font-size: 24px;
   font-weight: 500;
   z-index: 1;
   color: #4c6dac;
   img {
-    width: 100px;
-    height: 50px;
+    width: 140px;
     object-fit: contain;
   }
 }
@@ -173,11 +172,10 @@ export default class Index extends Vue {
 .bg_view {
   background-image: url('../assets/images/WechatIMG424.jpeg');
   background-repeat: no-repeat;
-  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 80px);
-  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 80px);
-  background-size: 100% 100%;
+  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 200px);
+  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 200px);
   position: relative;
-  overflow-y: auto;
+  background-size: 100% 100%;
 }
 .loader_moer {
   width: 250px;
@@ -210,10 +208,11 @@ export default class Index extends Vue {
     margin-right: 32px;
   }
   .list_item_view {
-    // height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
-    // height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
+    height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
+    height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
     text-align: left;
-    // overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     width: 100%;
     .item {
       width: 300px;
@@ -227,8 +226,8 @@ export default class Index extends Vue {
       box-sizing: border-box;
       margin: 10px 20px 30px;
       img {
-        width: 250px;
-        height: 310px;
+        width: 300px;
+        height: 200px;
         border-radius: 10px;
         object-fit: cover;
       }

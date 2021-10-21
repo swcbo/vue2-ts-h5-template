@@ -7,7 +7,7 @@
       :src="info.video"
       style="width:100vw;background:black"
     ></video>
-    <div class="content" v-html="info.content"></div>
+    <div class="content mP-20" v-html="info.content"></div>
   </div>
 </template>
 
@@ -31,5 +31,8 @@ video::-webkit-media-controls-enclosure {
 }
 video::-webkit-media-controls-panel {
   width: calc(100% + 30px);
+}
+.mP-20 {
+  padding: 0 40px;
 }
 </style>
