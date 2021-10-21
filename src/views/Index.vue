@@ -190,10 +190,10 @@ export default class Index extends Vue {
 .bg_view {
   background-image: url('../assets/images/WechatIMG424.jpeg');
   background-repeat: no-repeat;
-  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 200px);
-  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 200px);
+  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);
+  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 100px);
   position: relative;
-  background-size: 100% 100%;
+  height: 1;
 }
 .bg_scroll {
   height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);
