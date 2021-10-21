@@ -1,53 +1,60 @@
 <template>
   <div class="bg_view">
-    <img src="@/assets/images/WechatIMG423.jpeg" style="width:100vw" />
-    <div class="top_content row_center" v-if="topInfo">
-      <div class="column_center">
-        <span>{{ topInfo.participate }}</span>
-        <span>参与人数</span>
+    <div class="bg_scroll">
+      <img src="@/assets/images/WechatIMG423.jpeg" style="width:100vw" />
+      <div class="top_content row_center" v-if="topInfo">
+        <div class="column_center">
+          <span>{{ topInfo.participate }}</span>
+          <span>参与人数</span>
+        </div>
+        <div class="line" />
+        <div class="column_center">
+          <span>{{ topInfo.vote_number }}</span>
+          <span>累计投票</span>
+        </div>
+        <div class="line" />
+        <div class="column_center">
+          <span>{{ topInfo.visit }}</span>
+          <span>访问数量</span>
+        </div>
       </div>
-      <div class="line" />
-      <div class="column_center">
-        <span>{{ topInfo.vote_number }}</span>
-        <span>累计投票</span>
-      </div>
-      <div class="line" />
-      <div class="column_center">
-        <span>{{ topInfo.visit }}</span>
-        <span>访问数量</span>
-      </div>
-    </div>
-    <div class="list_view">
-      <!-- <div class="row_center">
+      <div class="list_view">
+        <!-- <div class="row_center">
         <img src="@/assets/images/erwei.png" class="top_view" />
         点击查看详情
       </div> -->
-      <div class="list_item_view">
-        <!-- <van-list
+        <div class="list_item_view" ref="scorll">
+          <!-- <van-list
           v-model="loading"
           :finished="finished"
           finished-text="没有更多了"
           @load="onLoad"
           :offset="50"
         > -->
-        <div
-          v-for="(item, index) in items"
-          :key="index"
-          class="column_center item"
-          @click="preView(item)"
-        >
-          <!-- <div class="top_title">{{ item.serial_number }}</div> -->
-          <img :src="`${item.cover}?imageView2/1/h/400`" />
           <div
-            class="name"
-            v-html="item.title"
-            style="white-space: pre-wrap;"
-          ></div>
-          <div class="tou" @click.stop="toPiao(item.id, index)">投TA一票</div>
-          <div class="now_piao">已获投票数：{{ item.show_vote_number }}票</div>
+            v-for="(item, index) in items"
+            :key="index"
+            class="column_center item"
+            @click="preView(item)"
+          >
+            <!-- <div class="top_title">{{ item.serial_number }}</div> -->
+            <img :src="`${item.cover}?imageView2/1/h/400`" />
+            <div class="name_view">
+              <div class="name" style="white-space: pre-wrap;">
+                {{ item.title }}
+              </div>
+            </div>
+            <div class="tou" @click.stop="toPiao(item.id, index)">投TA一票</div>
+            <div class="now_piao">
+              已获投票数：{{ item.show_vote_number }}票
+            </div>
+          </div>
+          <!-- </van-list> -->
+          <img
+            src="@/assets/images/bottom_view.png"
+            style="width:100%;margin-top:10px"
+          />
         </div>
-        <!-- </van-list> -->
-        <img src="@/assets/images/bottom_view.jpg" style="width:100vw" />
       </div>
     </div>
 
@@ -104,6 +111,7 @@ export default class Index extends Vue {
   total = 0
   finished = false
   loading = false
+  scroll = 0
   @Watch('show')
   watchSHow() {
     ;(window as any).show = true
@@ -127,11 +135,21 @@ export default class Index extends Vue {
     this.page += 1
     this.getData()
   }
-  async created() {
+  async mounted() {
+    document
+      .querySelector('.bg_scroll')!
+      .addEventListener('scroll', this.handleScroll)
     const { content } = await querystatistical()
     this.topInfo = content
     this.onLoad()
   }
+  handleScroll() {
+    this.scroll = document.querySelector('.bg_scroll')?.scrollTop || 0
+  }
+  activated() {
+    document.querySelector('.bg_scroll')?.scrollTo(0, this.scroll)
+  }
+
   async getData() {
     const { content, count } = await inquirelist({
       votes_sort: false,
@@ -177,6 +195,14 @@ export default class Index extends Vue {
   position: relative;
   background-size: 100% 100%;
 }
+.bg_scroll {
+  height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);
+  height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 100px);
+  overflow-y: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
 .loader_moer {
   width: 250px;
   height: 60px;
@@ -208,11 +234,11 @@ export default class Index extends Vue {
     margin-right: 32px;
   }
   .list_item_view {
-    height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
-    height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
+    // height: calc(#{$height-primary} - 620px - constant(safe-area-inset-bottom));
+    // height: calc(#{$height-primary} - 620px - env(safe-area-inset-bottom));
     text-align: left;
-    overflow-y: auto;
-    overflow-x: hidden;
+    // overflow-y: auto;
+    // overflow-x: hidden;
     width: 100%;
     .item {
       width: 300px;
@@ -231,18 +257,19 @@ export default class Index extends Vue {
         border-radius: 10px;
         object-fit: cover;
       }
+      .name_view {
+        height: 60px;
+      }
       .name {
         font-size: 28px;
         font-weight: 500;
         color: #103056;
         margin-top: 10px;
         line-height: 120%;
-        text-overflow: -o-ellipsis-lastline;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2;
-        line-clamp: 2;
         -webkit-box-orient: vertical;
       }
       .tou {
