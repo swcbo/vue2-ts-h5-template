@@ -75,10 +75,10 @@ export default class ListPage extends Vue {
   page = 0
   total = 0
   log = [
-    require('@/assets/images/first.jpg'),
-    require('@/assets/images/second.jpg'),
-    require('@/assets/images/third.jpg'),
-    require('@/assets/images/normal.jpg')
+    require('@/assets/images/first.png'),
+    require('@/assets/images/second.png'),
+    require('@/assets/images/third.png'),
+    require('@/assets/images/normal.png')
   ]
   created() {
     this.page += 1
