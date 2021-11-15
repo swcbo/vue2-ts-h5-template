@@ -117,7 +117,8 @@ export default class Index extends Vue {
     ;(window as any).show = true
   }
   preView(item: any) {
-    this.$router.push(`/detail/${item.id}`)
+    Toast({ message: '活动已结束吧', icon: 'none' })
+    // this.$router.push(`/detail/${item.id}`)
   }
   toWeb() {
     window.location.href = 'https://www.uavdvc.com/'

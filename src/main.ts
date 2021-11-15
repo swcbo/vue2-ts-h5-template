@@ -24,21 +24,21 @@ new Vue({
   store,
   render: h => h(App),
   created() {
-    const info = getAuth()
-    if (!info || this.getCodes('code')) {
-      if (this.getCodes('code')) {
-        this.getopenId()
-      } else {
-        const redirecturl = encodeURIComponent('https://vote.huangb.top')
-        const appid = 'wxe00470f7a99e85cf'
-        window.location.href =
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
-          appid +
-          '&redirect_uri=' +
-          redirecturl +
-          '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
-      }
-    }
+    // const info = getAuth()
+    // if (!info || this.getCodes('code')) {
+    //   if (this.getCodes('code')) {
+    //     this.getopenId()
+    //   } else {
+    //     const redirecturl = encodeURIComponent('https://vote.huangb.top')
+    //     const appid = 'wxe00470f7a99e85cf'
+    //     window.location.href =
+    //       'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+    //       appid +
+    //       '&redirect_uri=' +
+    //       redirecturl +
+    //       '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+    //   }
+    // }
   },
   methods: {
     async getopenId() {
