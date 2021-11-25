@@ -117,8 +117,8 @@ export default class Index extends Vue {
     ;(window as any).show = true
   }
   preView(item: any) {
-    Toast({ message: '活动已结束吧', icon: 'none' })
-    // this.$router.push(`/detail/${item.id}`)
+    // Toast({ message: '活动已结束吧', icon: 'none' })
+    this.$router.push(`/detail/${item.id}`)
   }
   toWeb() {
     window.location.href = 'https://www.uavdvc.com/'
@@ -220,7 +220,7 @@ export default class Index extends Vue {
   margin-bottom: 20px;
 }
 .list_view {
-  margin-top: 100px;
+  margin-top: 180px;
   // margin-top: 230px;
   padding: 0px 20px 10px;
   font-size: 32px;
@@ -264,7 +264,7 @@ export default class Index extends Vue {
       .name {
         font-size: 28px;
         font-weight: 500;
-        color: #103056;
+        color: #fff;
         margin-top: 10px;
         line-height: 120%;
         overflow: hidden;
@@ -281,7 +281,9 @@ export default class Index extends Vue {
         text-align: center;
         margin: 10px auto;
         border-radius: 27px;
-
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 24px;
         font-weight: 500;
         color: #ffffff;
@@ -289,7 +291,7 @@ export default class Index extends Vue {
       .now_piao {
         font-size: 26px;
         font-weight: 500;
-        color: #103056;
+        color: #fff;
         line-height: 120%;
       }
       .top_title {
@@ -315,7 +317,7 @@ export default class Index extends Vue {
   height: 186px;
   background: #ffffff;
   border-radius: 10px;
-  top: 300px;
+  top: 400px;
   position: absolute;
   z-index: 1;
   left: 0;
