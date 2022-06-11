@@ -65,19 +65,19 @@
           class="row_center"
         >
           <img src="@/assets/images/fll.png" />
-          初赛作品投票规则
+          决赛作品投票规则
         </div>
         <div style="text-align:left">
           <van-icon name="clock-o" color="#1989fa" />
-          投票开始：2021-10-22 08:00
+          投票开始：2021-12-01 00:00
         </div>
         <div style="text-align:left">
           <van-icon name="clock-o" color="#1989fa" />
-          投票结束：2021-10-28 22:00
+          投票结束：2021-12-05 23:59
         </div>
         <div style="text-align:left">
           <van-icon name="info-o" color="#1989fa" />
-          投票规则：每个微信号每天可以投票10次（每天可为同一作品投票10次，也可为不同作品分别投票）
+          投票规则：每个微信号每天可以投票10次（每天可为同一作品投票10次，也可为不同作品分别投票，但总投票数不可超过10票）
         </div>
         <div style="text-align:left">
           <van-icon name="orders-o" color="#1989fa" />
@@ -117,8 +117,8 @@ export default class Index extends Vue {
     ;(window as any).show = true
   }
   preView(item: any) {
-    // Toast({ message: '活动已结束吧', icon: 'none' })
-    this.$router.push(`/detail/${item.id}`)
+    Toast({ message: '活动已结束', icon: 'none' })
+    // this.$router.push(`/detail/${item.id}`)
   }
   toWeb() {
     window.location.href = 'https://www.uavdvc.com/'
@@ -191,10 +191,11 @@ export default class Index extends Vue {
 .bg_view {
   background-image: url('../assets/images/WechatIMG424.jpeg');
   background-repeat: no-repeat;
+  width: 100vw;
   height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);
   height: calc(#{$height-primary} - env(safe-area-inset-bottom) - 100px);
   position: relative;
-  height: 1;
+  background-size: 100% 100%;
 }
 .bg_scroll {
   height: calc(#{$height-primary} - constant(safe-area-inset-bottom) - 100px);

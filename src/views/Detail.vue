@@ -106,12 +106,12 @@ export default class extends Vue {
   bottom: 20vh;
   border-radius: 50%;
   right: 20px;
-  height: 100px;
+  height: 80px;
   background: #fff;
   text-align: center;
-  line-height: 100px;
+  line-height: 80px;
   color: #333;
-  width: 100px;
+  width: 80px;
 }
 .deital_bg {
   background: black;
