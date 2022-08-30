@@ -58,7 +58,7 @@ const baseRequest = (config: any) => {
 			count -= 1;
 			count === 0 && Toast.clear();
 			if (error.response.status === 401) {
-				const redirecturl = encodeURIComponent('https://zhongdhy.top/vote/');
+				const redirecturl = encodeURIComponent('https://zhongdhy.top/plausible/');
 				const appid = 'wxee04542b110823d7';
 				window.location.href =
 					'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +

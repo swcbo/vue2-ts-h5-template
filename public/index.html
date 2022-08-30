@@ -37,22 +37,6 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <audio src="https://trade-erp.oss-cn-beijing.aliyuncs.com/erp_file/%E8%83%8C%E6%99%AF/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3" autoplay="autoplay" class="music-audio" id="audio" loop="loop"></audio>
     <!-- built files will be auto injected -->
   </body>
-  <script>
-    document.addEventListener('DOMContentLoaded',
-        function () {
-            function audioAutoPlay() {
-                var audio = document.getElementById('audio');
-                audio.play();
-                document.addEventListener("WeixinJSBridgeReady",
-                    function () {
-                        audio.play();
-                    },
-                    false);
-            }
-            audioAutoPlay();
-        });
-</script>
 </html>

@@ -16,21 +16,21 @@ new Vue({
 	store,
 	render: (h) => h(App),
 	created() {
-		const info = getAuth();
-		if (!info || this.getCodes('code')) {
-			if (this.getCodes('code')) {
-				this.getopenId();
-			} else {
-				const redirecturl = encodeURIComponent('https://zhongdhy.top/vote/');
-				const appid = 'wxee04542b110823d7';
-				window.location.href =
-					'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
-					appid +
-					'&redirect_uri=' +
-					redirecturl +
-					'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-			}
-		}
+		// const info = getAuth();
+		// if (!info || this.getCodes('code')) {
+		// 	if (this.getCodes('code')) {
+		// 		this.getopenId();
+		// 	} else {
+		// 		const redirecturl = encodeURIComponent('https://temporary.huangb.top/plausible/');
+		// 		const appid = 'wx6e914febaa066e4f';
+		// 		window.location.href =
+		// 			'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+		// 			appid +
+		// 			'&redirect_uri=' +
+		// 			redirecturl +
+		// 			'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+		// 	}
+		// }
 	},
 	methods: {
 		async getopenId() {
@@ -38,7 +38,7 @@ new Vue({
 			if (status) {
 				setAuth(token);
 				statistical()
-				location.replace('https://zhongdhy.top/vote/');
+				location.replace('https://temporary.huangb.top/plausible/');
 			}
 		},
 		getCodes(code: string) {

@@ -16,7 +16,7 @@ function resolve(dir) {
 	return path.join(__dirname, dir);
 }
 module.exports = {
-	publicPath:"/vote/",
+	publicPath:"/plausible/",
 	productionSourceMap: process.env.VUE_APP_EVN !== 'production', //取消sorcemap
 	configureWebpack: (config) => {
 		if (IS_PROD) {
