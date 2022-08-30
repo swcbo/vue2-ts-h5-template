@@ -36,11 +36,12 @@
                     </div>
                     <div class="text-wrapper_44 flex-row justify-between">
                         <span class="text_3">投票规则：</span>
-                        <span class="paragraph_1">
-                            每人每天有三次投票机会，可投一个
-                            <br />
-                            作品，也可投多个作品，刷票作废。
-                        </span>
+                        <span
+                            class="paragraph_1"
+                            v-html="
+                                `每人每天有三次投票机会，可投一个作品，也可投多个作品，刷票作废。`
+                            "
+                        ></span>
                     </div>
                     <!-- <div class="text-wrapper_3 flex-col">
                         <span class="text_4">活动已结束</span>
@@ -88,6 +89,7 @@
                                         class="image_5"
                                         referrerpolicy="no-referrer"
                                         :src="item.list[0].cover"
+                                        @click="onImageClick(item)"
                                     />
                                 </div>
                             </div>
@@ -107,32 +109,32 @@
                                 <span class="text_8">{{ item.control_no }}号</span>
                             </div>
                         </div>
+                        <div
+                            v-if="!content.length"
+                            style="line-height:200px;text-align: center;width:100%"
+                        >
+                            暂无数据
+                        </div>
                     </div>
                 </div>
             </div>
-            <span class="text_58">本活动最终解释权归xxx所有</span>
+            <span class="text_58">本活动最终解释权归顺义区妇女联合会所有</span>
         </div>
         <div class="box_19 flex-col">
             <div class="text-wrapper_38 flex-col">
                 <div class="text-wrapper_60 flex-col justify-between">
-                    <span class="paragraph_2">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022年是党的二十大召开之年，也是实施
-                        <br />
-                        “十四五”规划承上启下的重要一年，为迎接和学
-                        <br />
-                        习宣传贯彻党的二十大，顺义区妇联以“巾帼心
-                        <br />
-                        向党&nbsp;喜迎二十大”为主题召开手工艺品大赛
-                    </span>
-                    <span class="paragraph_3">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自活动开展以来，各镇街、各单位高度重视，
-                        <br />
-                        选送的作品主题鲜明，健康向上，截至目前共收
-                        <br />
-                        到作品xx份，经活动组委会评审，择优选取xx份
-                        <br />
-                        作品面向社会进行线上投票。
-                    </span>
+                    <span
+                        class="paragraph_2"
+                        v-html="
+                            `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022年是党的二十大召开之年，也是实施“十四五”规划承上启下的重要一年，为迎接和学习宣传贯彻党的二十大，顺义区妇联以“巾帼心向党&nbsp;喜迎二十大”为主题召开手工艺品大赛`
+                        "
+                    ></span>
+                    <span
+                        class="paragraph_3"
+                        v-html="
+                            ` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自活动开展以来，各镇街、各单位高度重视，选送的作品主题鲜明，健康向上，截至目前共收到作品xx份，经活动组委会评审，择优选取xx份作品面向社会进行线上投票。`
+                        "
+                    ></span>
                 </div>
             </div>
             <div class="group_5 flex-col">
@@ -150,11 +152,13 @@
 </template>
 <script lang="js">
 import {getRotations,vote_statistics,addPiao} from '../api'
+import { ImagePreview } from 'vant';
 export default {
   data() {
     return {
       current:0,
       content:[],
+      all:[],
       search:'',
       info:{
         user_number: 0,
@@ -172,6 +176,7 @@ export default {
   },
   watch:{
     current(){
+        this.search = ''
       this.getData()
 
     }
@@ -182,21 +187,31 @@ export default {
   },
   methods: {
    async toAdd(id){
-      await addPiao(id)
+     const {status}= await addPiao(id)
+     if(status){
+        await Promise.all([ this.getData(),this.getInfo()])
+        Toast('感谢参与！')
+     }
+
     },
-    getInfo(){
-      vote_statistics().then(({content})=>{
+   async getInfo(){
+    const {content} = await  vote_statistics()
+
       this.info = content
-      })
     },
    async getData(){
      const {content}= await  getRotations(this.current === 0?5:6)
+     this.all = content;
      this.content = content;
     },
+    onImageClick({list}){
+      ImagePreview({
+        images: list.map(v=>v.file),
+        startPosition: 0,
+       });
+    },
     onClick_1() {
-     if(this.search){
-
-     }
+        this.content = [...this.all.filter(v=>v.title.includes(this.search))]
     },
   },
 };
@@ -482,7 +497,7 @@ button:active {
                         display: inline-block;
                         overflow-wrap: break-word;
                         color: rgba(112, 7, 7, 1);
-                        font-size: 30px;
+                        font-size: 28px;
                         font-family: PingFangSC-Medium;
                         line-height: 42px;
                         text-align: left;
@@ -549,6 +564,7 @@ button:active {
                                 color: #333;
                                 font-size: 30px;
                                 line-height: 42px;
+                                margin-left: 10px;
                             }
                         }
                     }
@@ -664,7 +680,7 @@ button:active {
                         height: 90px;
                         display: flex;
                         align-items: center;
-                        overflow: hidden;
+                        justify-content: center;
                         color: rgba(0, 0, 0, 1);
                         font-size: 32px;
                         text-align: center;
@@ -785,16 +801,13 @@ button:active {
             }
         }
         .text_58 {
-            width: 301px;
+            width: 100vw;
             height: 33px;
-            display: inline-block;
-            overflow-wrap: break-word;
             color: rgba(255, 192, 192, 1);
             font-size: 24px;
-            white-space: nowrap;
             line-height: 33px;
-            text-align: left;
-            margin: 50px 0 77px 225px;
+            text-align: center;
+            margin: 50px 0 100px 0;
         }
     }
     .box_19 {
@@ -822,17 +835,17 @@ button:active {
                     color: rgba(112, 7, 7, 1);
                     font-size: 30px;
                     line-height: 42px;
-                    text-align: left;
+                    text-align: justify;
                 }
                 .paragraph_3 {
-                    width: 660px;
+                    width: 633px;
                     height: 168px;
                     display: inline-block;
                     overflow-wrap: break-word;
                     color: rgba(112, 7, 7, 1);
                     font-size: 30px;
                     line-height: 42px;
-                    text-align: left;
+                    text-align: justify;
                     margin-top: 25px;
                 }
             }

@@ -49,7 +49,7 @@ const baseRequest = (config: any) => {
             count -= 1
             count === 0 && Toast.clear()
             if (!response.data.status) {
-                Toast.fail(response.data.message)
+                Toast(response.data.message)
             }
 
             return response.data
@@ -58,16 +58,9 @@ const baseRequest = (config: any) => {
             count -= 1
             count === 0 && Toast.clear()
             if (error.response.status === 401) {
-                const redirect = encodeURIComponent('https://temporary.huangb.top/plausible/')
-                const appid = 'wx6e914febaa066e4f'
-                window.location.href =
-                    'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
-                    appid +
-                    '&redirect_uri=' +
-                    redirect +
-                    '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+                Toast('登陆超时请刷新')
             } else {
-                Toast.fail('服务器异常')
+                Toast('服务器异常')
             }
 
             return Promise.reject(error)

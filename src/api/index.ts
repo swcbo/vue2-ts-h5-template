@@ -1,5 +1,6 @@
 import request from '@/utils/request'
-export const checkCode = (code: string) => request.post('subscriber/code_exchange_open_id', {code})
+export const checkCode = (open_id: string) =>
+    request.post('subscriber/open_id_registered', {open_id})
 export const getRotations = (type = 5) =>
     request.post('clap/inquire', {
         page: 1,
@@ -9,5 +10,4 @@ export const getRotations = (type = 5) =>
         page_size: 10000,
     })
 export const vote_statistics = () => request.post('clap/vote_statistics', {})
-export const addPiao = (provisional_vote_id: string) =>
-    request.post('provisional_vote/add', {provisional_vote_id})
+export const addPiao = (id: string) => request.post('clap/vote', {id})
