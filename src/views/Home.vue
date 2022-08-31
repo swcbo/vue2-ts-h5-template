@@ -52,8 +52,8 @@
                 <div class="box_26 flex-col">
                     <div class="group_11 flex-row justify-between">
                         <div class="section_1 flex-col">
-                            <div class="section_6 flex-row justify-between">
-                                <div class="box_28 flex-col"></div>
+                            <div class="section_6">
+                                <div class="box_28"></div>
                                 <input
                                     class="text-group_1"
                                     placeholder="请输入选手编号或名称"
@@ -152,7 +152,7 @@
 </template>
 <script lang="js">
 import {getRotations,vote_statistics,addPiao} from '../api'
-import { ImagePreview } from 'vant';
+import { Dialog, ImagePreview } from 'vant';
 export default {
   data() {
     return {
@@ -186,12 +186,19 @@ export default {
     this.getInfo()
   },
   methods: {
-   async toAdd(id){
-     const {status}= await addPiao(id)
-     if(status){
-        await Promise.all([ this.getData(),this.getInfo()])
-        Toast('感谢参与！')
-     }
+    toAdd(id){
+    Dialog.confirm({
+        title: '提示',
+        message: '是否确认投票?',
+        }).then(async() => {
+            const {status}= await addPiao(id)
+            if(status){
+                await Promise.all([ this.getData(),this.getInfo()])
+                Toast('感谢参与！')
+            }
+
+        });
+
 
     },
    async getInfo(){
@@ -211,7 +218,7 @@ export default {
        });
     },
     onClick_1() {
-        this.content = [...this.all.filter(v=>v.title.includes(this.search))]
+        this.content = [...this.all.filter(v=>v.title.includes(this.search)||`${v.control_no}`.includes(this.search))]
     },
   },
 };
@@ -542,16 +549,16 @@ button:active {
                 margin: 41px 0 0 21px;
                 .group_11 {
                     width: 660px;
-                    height: 80px;
                     .section_1 {
-                        height: 80px;
                         border-radius: 40px;
                         border: 1px solid rgba(186, 16, 12, 1);
                         width: 490px;
                         .section_6 {
-                            width: 351px;
-                            height: 42px;
-                            margin: 19px 0 0 27px;
+                            padding: 0 32px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 80px;
                             .box_28 {
                                 width: 40px;
                                 height: 40px;
@@ -559,11 +566,9 @@ button:active {
                                 background-size: 100% 100%;
                             }
                             .text-group_1 {
-                                width: 100%;
-                                height: 42px;
+                                flex: 1;
                                 color: #333;
                                 font-size: 30px;
-                                line-height: 42px;
                                 margin-left: 10px;
                             }
                         }
