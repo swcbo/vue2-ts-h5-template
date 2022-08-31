@@ -132,7 +132,7 @@
                     <span
                         class="paragraph_3"
                         v-html="
-                            ` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自活动开展以来，各镇街、各单位高度重视，选送的作品主题鲜明，健康向上，截至目前共收到作品xx份，经活动组委会评审，择优选取xx份作品面向社会进行线上投票。`
+                            ` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自活动开展以来，各镇街、各单位高度重视，选送的作品主题鲜明，健康向上，截至目前共收到作品174份，经活动组委会评审，择优选取97份作品面向社会进行线上投票。`
                         "
                     ></span>
                 </div>
@@ -168,7 +168,7 @@ export default {
       loopData0: [
         { lanhutext0: '投票开始：', lanhutext1: '投票截止：' },
         {
-          lanhutext0: '2022-08-31&nbsp;&nbsp;&nbsp;9:00:00',
+          lanhutext0: '2022-08-31&nbsp;&nbsp;&nbsp;09:00:00',
           lanhutext1: '2022-09-04&nbsp;&nbsp;&nbsp;23:59:59',
         },
       ],
